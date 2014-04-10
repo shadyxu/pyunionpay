@@ -8,7 +8,7 @@ from datetime import datetime
 import random
 import re
 
-import uppay_config as uc
+import config 
 
 
 def build_request(type, *args, **kwargs):
@@ -30,7 +30,7 @@ def build_request(type, *args, **kwargs):
         para = build_preauth_complete_cancel_para(*args, **kwargs)
     para = filter_para(para)
     para['signature'] = sign(para)
-    para['signMethod'] = uc.SIGN_TYPE
+    para['signMethod'] = config.SIGN_TYPE
     return create_link_string(para, False, True)
 
 
@@ -38,10 +38,10 @@ def _build_trade_para(order_num, amount, desc, type):
     """构造交易类请求参数"""
     para = {'version':'1.0.0',
             'charset':'UTF-8',
-            'transType':uc.DEAL_TYPE[type],
-            'merId':uc.MER_ID,
-            'backEndUrl':uc.BACK_END_URL,
-            'frontEndUrl':uc.FRONT_END_URL,
+            'transType':config.DEAL_TYPE[type],
+            'merId':config.MER_ID,
+            'backEndUrl':config.BACK_END_URL,
+            'frontEndUrl':config.FRONT_END_URL,
             'orderDescription':desc.encode('utf-8') if desc else desc,
             'orderTime':datetime.now().strftime('%Y%m%d%H%M%S'),
             'orderNumber':order_num,
@@ -65,9 +65,9 @@ def _build_post_trade_para(order_num, amount, qn, type):
 
     para = {'version':'1.0.0',
             'charset':'UTF-8',
-            'transType':uc.DEAL_TYPE[type],
-            'merId':uc.MER_ID,
-            'backEndUrl':uc.BACK_END_URL,
+            'transType':config.DEAL_TYPE[type],
+            'merId':config.MER_ID,
+            'backEndUrl':config.BACK_END_URL,
             'orderTime':datetime.now().strftime('%Y%m%d%H%M%S'),
             'orderNumber':order_num,
             'orderAmount':amount,
@@ -101,8 +101,8 @@ def build_refund_para(order_num, amount, qn):
 def build_query_para(order_num, type, deal_time):
     para = {'version':'1.0.0',
             'charset':'UTF-8',
-            'transType':uc.DEAL_TYPE[type],
-            'merId':uc.MER_ID,
+            'transType':config.DEAL_TYPE[type],
+            'merId':config.MER_ID,
             'orderTime':deal_time,
             'orderNumber':order_num,
             #'merReserved':'reserved'
@@ -139,7 +139,7 @@ def sign(para):
     @param para dict
     @return 签名 str"""
     para_str = create_link_string(para, True, False)
-    para_str = '%s&%s' % (para_str, md5(uc.SECURITY_KEY).hexdigest())
+    para_str = '%s&%s' % (para_str, md5(config.SECURITY_KEY).hexdigest())
     return md5(para_str).hexdigest()
 
 
