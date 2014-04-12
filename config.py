@@ -1,14 +1,16 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 
 # 银联分配用于MD5加密的秘钥
 SECURITY_KEY = ''
 
 # 手机支付交易地址
-TRADE_URL = 'http://222.66.233.198:8080/gateway/merchant/trade'
+TRADE_URL = 'https://mgate.unionpay.com/gateway/merchant/trade'
+# 测试服务器地址: TRADE_URL = 'http://222.66.233.198:8080/gateway/merchant/trade'
 
 # 手机支付查询地址
-QUERY_URL = 'http://222.66.233.198:8080/gateway/merchant/query'
+QUERY_URL = 'https://mgate.unionpay.com/gateway/merchant/query'
+# 测试服务器地址: QUERY_URL = 'http://222.66.233.198:8080/gateway/merchant/query'
 
 # 银联分配的商户ID
 MER_ID = ''
