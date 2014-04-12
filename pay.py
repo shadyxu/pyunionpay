@@ -5,7 +5,6 @@ import urllib
 import urlparse
 from hashlib import md5
 from datetime import datetime
-import random
 import re
 
 import config 
@@ -170,8 +169,4 @@ def verify_signature(para):
     para = filter_para(para)
     sig = sign(para) 
     return resp_sig and sig == resp_sig 
-
-
-def generate_deal_num(order_num):
-    return int('%s%s%s01' % (datetime.now().strftime('%y%m%d%H%M%S'), int(str(order_num)[-3:]), random.randint(10, 99)))
 

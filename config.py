@@ -1,7 +1,7 @@
 # coding: utf-8
 
 
-# 支付宝分配用于MD5加密的秘钥
+# 银联分配用于MD5加密的秘钥
 SECURITY_KEY = ''
 
 # 手机支付交易地址
@@ -10,7 +10,7 @@ TRADE_URL = 'http://222.66.233.198:8080/gateway/merchant/trade'
 # 手机支付查询地址
 QUERY_URL = 'http://222.66.233.198:8080/gateway/merchant/query'
 
-# 支付宝分配的商户ID
+# 银联分配的商户ID
 MER_ID = ''
 
 # 前端/同步通知地址
@@ -19,7 +19,7 @@ FRONT_END_URL = ''
 # 后端/异步通知地址
 BACK_END_URL = ''
 
-# 加密类型，支持"MD5", "0001"即RSA
+# 加密类型，目前仅支持"MD5"
 SIGN_TYPE = 'MD5'
 
 # 自定义的交易类型
