@@ -1,5 +1,5 @@
 # coding: utf-8
-# author: xujun
+
 
 import urllib
 import urlparse
@@ -11,6 +11,7 @@ import config
 
 
 def build_request(type, *args, **kwargs):
+    """入口，构造请求"""
     if type == 'trade':
         para = build_trade_para(*args, **kwargs)
     elif type == 'refund':
